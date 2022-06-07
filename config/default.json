@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "jwtSecret": "nastya ex4 authorization",
+  "mongoUri": "mongodb+srv://nastya:kokokosha14@cluster0.lzznh.mongodb.net/?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
+}

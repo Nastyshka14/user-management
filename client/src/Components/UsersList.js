@@ -124,9 +124,6 @@ export const UsersList = () => {
       if (ids.length) {
         const data = await request(`${API_PATH}auth/users`, 'DELETE', { ids });
         const updatedUserList = users.filter((user) => !ids.includes(user._id));
-        // if (!updatedUserList.includes(user._id)) {
-        //   logoutHandler();
-        // }
         setUsers(updatedUserList);
 
         message.success(data.message);

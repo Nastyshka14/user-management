@@ -4,6 +4,7 @@ import { useHttp } from '../hooks/http.hook';
 import { Form, Input, Button } from 'antd';
 import { message } from 'antd';
 import { Link } from 'react-router-dom';
+
 import { API_PATH } from '../constants';
 
 export const AuthPage = () => {

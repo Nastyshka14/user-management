@@ -4,11 +4,11 @@
   "description": "authorization",
   "main": "app.js",
   "engines": {
-    "node": "14.18.1"
+    "node": "14.18.1s"
   },
   "scripts": {
     "server": "nodemon app.js",
-    "start": "node app.js",
+    "start": "node dist/app.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "deploy": "git add . && git commit -m Heroku && git push heroku main"

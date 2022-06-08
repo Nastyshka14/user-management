@@ -19,7 +19,7 @@ async function start() {
     await mongoose
       .connect(process.env.DB_URL || 'mongodb+srv://nastya:kokokosha14@cluster0.lzznh.mongodb.net/?retryWrites=true&w=majority')
       .then(() => console.log('CONNNNNNECTED TO DB'))
-      .catch((err) => console.log('NOT CONNECTEEEEEEEEEEEEEEEEED!!!!: ', { err }))
+      .catch((err) => console.log('NOT CONNECTEEEEEEEEEEEEEEEEED!!!!: ', { err, URLURLURL: process.env.DB_URL }))
     
     app.listen(PORT, () =>
       console.log(`App has been started on port ${PORT}...`)

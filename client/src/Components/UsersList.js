@@ -4,7 +4,7 @@ import { useHttp } from '../hooks/http.hook';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { DeleteOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
+import { API_PATH } from '../constants';
 
 const columns = [
   {
@@ -42,7 +42,7 @@ export const UsersList = () => {
     ...user,
     key: user._id,
     lastLoginDate: new Date(user.lastLoginDate).toLocaleString('en-US'),
-    registrationDate: new Date(user.lastLoginDate).toLocaleString('en-US'),
+    registrationDate: new Date(user.registrationDate).toLocaleString('en-US'),
   }));
 
   const user = JSON.parse(localStorage.getItem('userData'));
@@ -59,7 +59,7 @@ export const UsersList = () => {
 
   useEffect(() => {
     if (userId) {
-      fetch(`/api/auth/user/${userId}`)
+      fetch(`${API_PATH}auth/user/${userId}`)
         .then((res) => res.json())
         .then((resp) => {
           if (!resp || resp.user.status === 'inactive') {
@@ -70,7 +70,7 @@ export const UsersList = () => {
   });
 
   useEffect(() => {
-    fetch('/api/auth/users')
+    fetch(`${API_PATH}auth/users`)
       .then((res) => res.json())
       .then(
         (resp) => {
@@ -102,7 +102,7 @@ export const UsersList = () => {
         );
         return;
       } else if (selectedUsers.length) {
-        const data = await request('api/auth/user', 'PUT', { ids, status });
+        const data = await request(`${API_PATH}auth/user`, 'PUT', { ids, status });
         const updatedUserList = users.map((user) =>
           ids.includes(user._id) ? { ...user, status } : user
         );
@@ -122,7 +122,7 @@ export const UsersList = () => {
   const deleteUsersHandler = async (ids) => {
     try {
       if (ids.length) {
-        const data = await request('api/auth/users', 'DELETE', { ids });
+        const data = await request(`${API_PATH}auth/users`, 'DELETE', { ids });
         const updatedUserList = users.filter((user) => !ids.includes(user._id));
         if (!updatedUserList.includes(user._id)) {
           logoutHandler();

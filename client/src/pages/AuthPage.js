@@ -4,6 +4,7 @@ import { useHttp } from '../hooks/http.hook';
 import { Form, Input, Button } from 'antd';
 import { message } from 'antd';
 import { Link } from 'react-router-dom';
+import { API_PATH } from '../constants';
 
 export const AuthPage = () => {
   const auth = useContext(AuthContext);
@@ -23,7 +24,7 @@ export const AuthPage = () => {
 
   const loginHandler = async () => {
     try {
-      const data = await request('/api/auth/login', 'POST', { ...form }).catch(
+      const data = await request( `${API_PATH}auth/login`, 'POST', { ...form }).catch(
         (err) => {
           console.log({ err });
           showMessage(err.message);

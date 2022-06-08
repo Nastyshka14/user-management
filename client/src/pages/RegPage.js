@@ -4,6 +4,7 @@ import { useHttp } from '../hooks/http.hook';
 import { Form, Input, Button } from 'antd';
 import { message } from 'antd';
 import { Link } from 'react-router-dom';
+import { API_PATH } from '../constants';
 
 export const RegPage = () => {
   const { loading, request } = useHttp();
@@ -19,7 +20,7 @@ export const RegPage = () => {
 
   const registerHandler = async () => {
     try {
-      const data = await request('/api/auth/register', 'POST', {
+      const data = await request(`${API_PATH}auth/register`, 'POST', {
         ...form,
       });
       await message.success(data.message);

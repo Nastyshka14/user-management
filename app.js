@@ -6,18 +6,13 @@ require('dotenv').config()
 const cors = require('cors')
 
 const app = express();
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8080
 app.use(cors())
 app.use(express.json({ extended: true }));
 
 app.use('/api/auth', require('./routes/auth.routes'));
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-app.listen(process.env.PORT || 4000, function () {
-  console.log('Node app is working!');
-});
+
 // if (process.env.NODE_ENV === 'production') {
 //   app.use('/', express.static(path.join(__dirname, 'client', 'build')));
 //   app.get('*', (req, res) => {

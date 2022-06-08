@@ -81,7 +81,8 @@ router.post(
 
       user.lastLoginDate = new Date().toLocaleDateString();
       user.save();
-      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), {
+      // const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), {
+      const token = jwt.sign({ userId: user.id }, 'nastya ex4 authorization', {
         expiresIn: '1h',
       });
       res.json({ token, userId: user.id });

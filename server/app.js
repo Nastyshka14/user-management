@@ -23,7 +23,10 @@ app.use('/api/auth', require('./routes/auth.routes'));
 async function start() {
   try {
     // await mongoose.connect(config.get('mongoUri'), {
-    await mongoose.connect(process.env.DB_URL || 'mongodb+srv://nastya:kokokosha14@cluster0.lzznh.mongodb.net/?retryWrites=true&w=majority');
+    await mongoose
+      .connect(process.env.DB_URL || 'mongodb+srv://nastya:kokokosha14@cluster0.lzznh.mongodb.net/?retryWrites=true&w=majority')
+      .then(() => console.log('CONNNNNNECTED TO DB'))
+    
     app.listen(PORT, () =>
       console.log(`App has been started on port ${PORT}...`)
     );

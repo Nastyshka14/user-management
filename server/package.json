@@ -7,10 +7,9 @@
     "node": "14.18.1"
   },
   "scripts": {
-    "server": "nodemon app.js",
-    "start": "node dist/app.js",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
   "keywords": [

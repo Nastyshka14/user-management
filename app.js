@@ -23,7 +23,7 @@ app.use('/api/auth', require('./routes/auth.routes'));
 async function start() {
   try {
     // await mongoose.connect(config.get('mongoUri'), {
-    await mongoose.connect('mongodb+srv://nastya:kokokosha14@cluster0.lzznh.mongodb.net/?retryWrites=true&w=majority' || process.env.DB_URL, {
+    await mongoose.connect(process.env.DB_URL || 'mongodb+srv://nastya:kokokosha14@cluster0.lzznh.mongodb.net/?retryWrites=true&w=majority', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
